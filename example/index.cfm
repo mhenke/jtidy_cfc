@@ -1,3 +1,8 @@
+<!--- see readme.txt for testing this example file --->
+
+<!--- component path to jtidy.cfc --->
+<cfset componentPath = "jtidy_cfc.jtidy" />
+
 <cfsavecontent variable="test">
 <html>
 	<head>
@@ -47,7 +52,7 @@
 </cfsavecontent>
 
 <cfinvoke 
- component="jtidy_cfc.jtidy" 
+ component="#componentPath#" 
     method="makexHTMLValid" 
 	strToParse="#test#"
     returnvariable="validxHTML"
