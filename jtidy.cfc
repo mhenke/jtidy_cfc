@@ -36,11 +36,11 @@
 			// generic warning
 			warning="jTidy is not installed on your server.";
 			
-			// jtidy-r938.zip from http://sourceforge.net/projects/jtidy/files/
+			// jtidy-r938.zip from http://sourceforge.net/projects/jtidy/files
 			loadPaths = ArrayNew(1);
-			loadPaths[1] = expandPath("lib/jtidy-r938.jar");
+			loadPaths[1] = getdirectoryfrompath(getcurrenttemplatepath()) & "lib\jtidy-r938.jar";
      	 	
-			javaloader = createObject("component", "javaloader.JavaLoader").init(loadPaths);														
+			javaloader = createObject("component", "jtidy_cfc.javaloader.JavaLoader").init(loadPaths);														
 			jTidy = javaloader.create("org.w3c.tidy.Tidy").init();	
 			 
 			jTidy.setQuiet(false);
@@ -79,7 +79,7 @@
 			
 			<cfreturn returnPart />
 			
-			<cfcatch type="any">
+			<cfcatch type="a">
 				<!--- display and log error message  --->
 				<cftrace type="warning" text="jtidy_cfc: #warning#" />
 				<!--- displays input data so the application still works --->
@@ -87,4 +87,5 @@
 			</cfcatch>
 		</cftry>
 	</cffunction>
+
 </cfcomponent>
