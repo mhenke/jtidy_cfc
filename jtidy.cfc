@@ -33,6 +33,7 @@
 			* added javaloader
 			*/
 			
+			// generic warning
 			warning="jTidy is not installed on your server.";
 			
 			// jtidy-r938.zip from http://sourceforge.net/projects/jtidy/files/
@@ -79,8 +80,9 @@
 			<cfreturn returnPart />
 			
 			<cfcatch type="any">
-				<!--- This could error because jTidy has not been installed on the server. --->
-				<cftrace type="warning" text="#warning#" />
+				<!--- display and log error message  --->
+				<cftrace type="warning" text="jtidy_cfc: #warning#" />
+				<!--- displays input data so the application still works --->
 				<cfreturn parseData />
 			</cfcatch>
 		</cftry>
